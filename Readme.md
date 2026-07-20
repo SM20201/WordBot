@@ -2,6 +2,6 @@
 
 Bot for android to semi-auto solve word finding-like games
 
-<img width="270" height="579" alt="image_2" src="https://github.com/user-attachments/assets/97f19e80-493e-448d-82ea-fc97faeedbd2" />
-<img width="270" height="579" alt="image_1" src="https://github.com/user-attachments/assets/3d86776d-8d0f-497e-a7d0-c34d7b5b26f5" />
+<img width="270" height="579" alt="image_2" src="https://github.com/user-attachments/assets/8113a4a2-b5c0-4727-86bc-4c233afde6d4" />
+<img width="270" height="579" alt="image_1" src="https://github.com/user-attachments/assets/5ca93e0f-9aa6-4b57-be77-a63b6b526b27" />
 
