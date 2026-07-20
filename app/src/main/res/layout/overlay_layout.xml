@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="260dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/overlay_background"
+    android:scrollbars="none"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:id="@+id/overlay_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <!-- ══ Drag Header ══ -->
+        <LinearLayout
+            android:id="@+id/overlay_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="2dp">
+
+            <!-- 3×2 drag dots -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginEnd="8dp">
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <View android:layout_width="3dp" android:layout_height="3dp" android:background="#556366F1" android:layout_marginEnd="2dp"/>
+                    <View android:layout_width="3dp" android:layout_height="3dp" android:background="#556366F1"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="2dp">
+                    <View android:layout_width="3dp" android:layout_height="3dp" android:background="#556366F1" android:layout_marginEnd="2dp"/>
+                    <View android:layout_width="3dp" android:layout_height="3dp" android:background="#556366F1"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="2dp">
+                    <View android:layout_width="3dp" android:layout_height="3dp" android:background="#556366F1" android:layout_marginEnd="2dp"/>
+                    <View android:layout_width="3dp" android:layout_height="3dp" android:background="#556366F1"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Title block -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WORDBOT"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Word Search Solver"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="8sp" />
+            </LinearLayout>
+
+            <!-- Status badge -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/status_badge_bg"
+                android:paddingStart="6dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp">
+
+                <View
+                    android:id="@+id/view_status_indicator"
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:background="@drawable/status_dot_green"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="READY"
+                    android:textColor="@color/status_green"
+                    android:textSize="8sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.06" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#1AFFFFFF"
+            android:layout_marginBottom="12dp" />
+
+        <!-- ══ SECTION: Solve Mode ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="10dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SOLVE MODE"
+                android:textColor="#906366F1"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="7dp" />
+
+            <RadioGroup
+                android:id="@+id/rg_solve_mode"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:orientation="horizontal"
+                android:background="@drawable/segment_group_bg"
+                android:padding="3dp">
+
+                <RadioButton
+                    android:id="@+id/rb_mode_line"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Line"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/segment_pill_selector"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rb_mode_snake"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Snake"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/segment_pill_selector" />
+
+                <RadioButton
+                    android:id="@+id/rb_mode_circle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Circle"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/segment_pill_selector" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- ══ SECTION: Allowed Directions ══ -->
+        <LinearLayout
+            android:id="@+id/layout_line_directions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="10dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ALLOWED DIRECTIONS"
+                android:textColor="#9006B6D4"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_dir_horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:text="Horiz"
+                    android:textColor="@color/text_primary"
+                    android:textSize="9sp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:background="@drawable/checkbox_chip_selector"
+                    android:checked="true"
+                    android:layout_marginEnd="4dp" />
+
+                <CheckBox
+                    android:id="@+id/cb_dir_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:text="Vert"
+                    android:textColor="@color/text_primary"
+                    android:textSize="9sp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:background="@drawable/checkbox_chip_selector"
+                    android:checked="true"
+                    android:layout_marginEnd="4dp" />
+
+                <CheckBox
+                    android:id="@+id/cb_dir_diagonal"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:text="Diag"
+                    android:textColor="@color/text_primary"
+                    android:textSize="9sp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:background="@drawable/checkbox_chip_selector"
+                    android:checked="true" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ══ SECTION: Speed &amp; Delay ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="10dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SWIPE SPEED"
+                android:textColor="#9006B6D4"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp" />
+
+            <RadioGroup
+                android:id="@+id/rg_swipe_speed"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                android:background="@drawable/segment_group_bg"
+                android:padding="3dp"
+                android:layout_marginBottom="10dp">
+
+                <RadioButton
+                    android:id="@+id/rb_speed_fast"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Fast"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/segment_pill_selector"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rb_speed_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Med"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/segment_pill_selector" />
+
+                <RadioButton
+                    android:id="@+id/rb_speed_slow"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Slow"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/segment_pill_selector" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACTION DELAY"
+                android:textColor="#9006B6D4"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp" />
+
+            <RadioGroup
+                android:id="@+id/rg_action_delay"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                android:background="@drawable/segment_group_bg"
+                android:padding="3dp">
+
+                <RadioButton
+                    android:id="@+id/rb_delay_short"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Short"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/segment_pill_selector"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rb_delay_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Med"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/segment_pill_selector" />
+
+                <RadioButton
+                    android:id="@+id/rb_delay_long"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Long"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:background="@drawable/segment_pill_selector" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- ══ SECTION: Automation Toggles ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="10dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AUTOMATION"
+                android:textColor="#9006B6D4"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Highlight Letters -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="2dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Highlight Letters"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp" />
+                <CheckBox
+                    android:id="@+id/cb_highlight_letters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:background="@drawable/toggle_switch_selector"
+                    android:checked="true"
+                    android:minWidth="40dp"
+                    android:minHeight="22dp" />
+            </LinearLayout>
+
+
+            <!-- Auto Click -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="2dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Auto Click Action Buttons"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp" />
+                <CheckBox
+                    android:id="@+id/cb_auto_click"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:background="@drawable/toggle_switch_selector"
+                    android:checked="false"
+                    android:minWidth="40dp"
+                    android:minHeight="22dp" />
+            </LinearLayout>
+
+            <!-- Auto Loop -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="2dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Auto Loop Solver"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp" />
+                <CheckBox
+                    android:id="@+id/cb_auto_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:background="@drawable/toggle_switch_selector"
+                    android:checked="false"
+                    android:minWidth="40dp"
+                    android:minHeight="22dp" />
+            </LinearLayout>
+
+            <!-- Brute Force -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="2dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Brute-Force Loop"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp" />
+                <CheckBox
+                    android:id="@+id/cb_brute_force"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:background="@drawable/toggle_switch_selector"
+                    android:checked="false"
+                    android:minWidth="40dp"
+                    android:minHeight="22dp" />
+            </LinearLayout>
+
+            <!-- Render All Grid Words -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Render All Grid Words"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp" />
+                <CheckBox
+                    android:id="@+id/cb_scan_all_words"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:background="@drawable/toggle_switch_selector"
+                    android:checked="false"
+                    android:minWidth="40dp"
+                    android:minHeight="22dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ══ SECTION: Difficulty ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="10dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DIFFICULTY BOOST"
+                android:textColor="#9006B6D4"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_difficulty_synonyms"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:text="Synonyms"
+                    android:textColor="@color/text_primary"
+                    android:textSize="9sp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:background="@drawable/checkbox_chip_selector"
+                    android:checked="false"
+                    android:layout_marginEnd="4dp" />
+
+                <CheckBox
+                    android:id="@+id/cb_difficulty_antonyms"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:text="Antonyms"
+                    android:textColor="@color/text_primary"
+                    android:textSize="9sp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:background="@drawable/checkbox_chip_selector"
+                    android:checked="false" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ══ SECTION: Words Input ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TARGET WORDS"
+                android:textColor="#9006B6D4"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/et_target_words"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/edittext_bg"
+                android:gravity="top|start"
+                android:hint="Comma-separated or scan to fill…"
+                android:inputType="textMultiLine|textCapCharacters"
+                android:padding="8dp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="#4094A3B8"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- ══ Action Buttons ══ -->
+        <Button
+            android:id="@+id/btn_solve"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/btn_solve_gradient"
+            android:text="⚡  Scan &amp; Solve"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:elevation="4dp" />
+
+        <Button
+            android:id="@+id/btn_set_zones"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/btn_calibrate_bg"
+            android:text="Calibrate Scan Zones"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:id="@+id/btn_minimize"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/btn_secondary_bg"
+                android:text="Minimize"
+                android:textColor="@color/text_secondary"
+                android:textSize="9sp"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_close_overlay"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_danger_bg"
+                android:text="✕  Close"
+                android:textColor="#EF4444"
+                android:textSize="9sp"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <!-- Status bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:background="@drawable/status_dot_green"
+                android:layout_marginEnd="5dp" />
+
+            <TextView
+                android:id="@+id/tv_overlay_status_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Status: Ready"
+                android:textColor="@color/text_secondary"
+                android:textSize="8sp"
+                android:ellipsize="end"
+                android:singleLine="true" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

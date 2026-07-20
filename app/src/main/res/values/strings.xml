@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WordBot</string>
+    <string name="accessibility_label">WordBot Auto-Swipe Service</string>
+    <string name="accessibility_desc">WordBot uses this service to perform automated swiping gestures on the screen in order to connect letters in word search/word finding games.</string>
+</resources>

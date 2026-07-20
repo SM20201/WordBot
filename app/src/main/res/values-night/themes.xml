@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.WordBot" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary_indigo</item>
+        <item name="colorPrimaryVariant">@color/primary_dark_indigo</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary_cyan</item>
+        <item name="colorSecondaryVariant">@color/secondary_cyan</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <!-- Background and window customization -->
+        <item name="android:windowBackground">@color/bg_slate_900</item>
+        <item name="android:statusBarColor">@color/bg_slate_900</item>
+        <item name="android:navigationBarColor">@color/bg_slate_900</item>
+    </style>
+</resources>

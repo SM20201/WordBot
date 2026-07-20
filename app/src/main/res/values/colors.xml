@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Backgrounds & Surfaces -->
+    <color name="bg_slate_900">#0F172A</color>
+    <color name="bg_slate_800">#1E293B</color>
+    <color name="bg_slate_700">#334155</color>
+    
+    <!-- Brand / Accents -->
+    <color name="primary_indigo">#6366F1</color>
+    <color name="primary_dark_indigo">#4F46E5</color>
+    <color name="secondary_cyan">#06B6D4</color>
+    <color name="accent_fuchsia">#D946EF</color>
+    
+    <!-- Status / Feedback -->
+    <color name="status_green">#10B981</color>
+    <color name="status_red">#EF4444</color>
+    <color name="status_orange">#F59E0B</color>
+    
+    <!-- Typography & Overlays -->
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    
+    <!-- Transparent Glass styles -->
+    <color name="glass_card_bg">#CC1E293B</color>
+    <color name="glass_border">#33FFFFFF</color>
+</resources>
